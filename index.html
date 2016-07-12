@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    
+    .outer {
+        overflow: hidden;
+        position: absolute;
+        text-align: center;
+        height: 50vh;
+        width: 60vw;
+        position: absolute;
+        margin: auto;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+    }
+    
+    .inner {
+        white-space: nowrap;
+        height: 100%;
+        width: 100%;
+    }
+    
+    .slide {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        white-space: normal;
+        opacity: 0;
+        transform: translateX(-100%);
+        transition: transform, 1s ease 0s, opacity 1s ease 0s;
+    }
+    
+    .slide img {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .slide1 {
+        background: green;
+    }
+    
+    .slide2 {
+        background: yellow;
+    }
+    
+    .slide3 {
+        background: pink;
+    }
+    
+    .slide4 {
+        background: red;
+    }
+    
+    input:nth-of-type(1):checked ~ .inner {
+        transform: translateX(0);
+    }
+    
+    input:nth-of-type(2):checked ~ .inner {
+        transform: translateX(-100%);
+    }
+    
+    input:nth-of-type(3):checked ~ .inner {
+        transform: translateX(-200%);
+    }
+    
+    input:nth-of-type(4):checked ~ .inner {
+        transform: translateX(-300%);
+    }
+    
+    form {
+        height: 100%;
+        width: 100%;
+    }
+    
+    input:nth-of-type(1):checked ~ .inner .slide:nth-of-type(1) {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+    
+    input:nth-of-type(2):checked ~ .inner .slide:nth-of-type(2) {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+    
+    input:nth-of-type(3):checked ~ .inner .slide:nth-of-type(3) {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+    
+    input:nth-of-type(4):checked ~ .inner .slide:nth-of-type(4) {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+    </style>
+    <script>
+    window.onload = function() {
+        btn_1.cnt = 0
+        btn_1.addEventListener('click', function() {
+            if (this.cnt === 4) {
+                this.cnt = 0;
+            }
+            var bts = [btn1, btn2, btn3, btn4];
+            bts[this.cnt++].checked = true;
+        }, false);
+    };
+    </script>
+</head>
+
+<body>
+    <button type="button" id="btn_1">next</button>
+    <div class="outer">
+        <input type="radio" name="slide" checked id="btn1">
+        <input type="radio" name="slide" id="btn2">
+        <input type="radio" name="slide" id="btn3">
+        <input type="radio" name="slide" id="btn4">
+        <div class="inner">
+            <form action="">
+                <div class="slide1 slide">shardul1</div>
+                    <div class="slide2 slide">shadul2</div>
+                    <div class="slide3 slide">shardul3</div>
+                    <div class="slide4 slide">shardul4</div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
